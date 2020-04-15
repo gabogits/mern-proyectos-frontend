@@ -39,7 +39,6 @@ const ProyectoState = props => {
     //obtener los proyectos
     
     const obtenerProyectos = () => {
-        console.log("se ejecuta")
         dispatch({
             type: OBTENER_PROYECTOS,
             payload:proyectos
