@@ -13,6 +13,7 @@ const Proyectos = () => {
 
   useEffect(()=> {
     usuarioAutenticado();
+    //eslint-disable-next-line
   }, [])
   return (
     <div className="contenedor-app">

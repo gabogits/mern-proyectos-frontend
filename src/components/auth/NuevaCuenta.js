@@ -20,6 +20,7 @@ const NuevaCuenta = (props) => { //aqui se pasa para tener acceso al router
     if(mensaje) {
       mostrarAlerta(mensaje.msg, mensaje.categoria);
     }
+    //eslint-disable-next-line
   }, [mensaje, autenticado, props.history]) //cuando cambie algo aqui el componente se va volver a cargar
 
 

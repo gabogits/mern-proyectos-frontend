@@ -17,24 +17,27 @@ export default (state, action) => {
       return {
           ...state,
           autenticado:true,
-          mensaje:null
+          mensaje:null,
+          cargando:false
       };
     case OBTENER_USUARIO: 
       return {
         ...state,
         autenticado:true,
-        usuario: action.payload
+        usuario: action.payload,
+        cargando:false
       }
-    case CERRAR_SESION:
+    case CERRAR_SESION: //aqui hay que hacer algo mas para uqe limpie los datos de los states, por que se siguen viendo los proyectos del usuario anterioi
     case LOGIN_ERROR:
-    case REGISTRO_ERROR:
+    case REGISTRO_ERROR: 
       localStorage.removeItem('token');
       return {
           ...state,
           token:null,
           usuario:null,
           autenticado:false,
-          mensaje: action.payload
+          mensaje: action.payload,
+        cargando:false
       };
    
     default:

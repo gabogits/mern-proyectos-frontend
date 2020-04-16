@@ -19,6 +19,7 @@ const AuthState = ({ children }) => {
     autenticado: null,
     usuario: null,
     mensaje: null,
+    cargando:true
   };
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
@@ -108,6 +109,7 @@ const AuthState = ({ children }) => {
         autenticado: state.autenticado,
         usuario: state.usuario,
         mensaje: state.mensaje,
+        cargando:  state.cargando,
         registrarUsuario,
         iniciarSesion,
         usuarioAutenticado,

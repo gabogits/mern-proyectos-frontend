@@ -9,7 +9,7 @@ const FormTarea = () => {
 
   //obtener la funcion del context de tarea
   const tareasContext = useContext(tareaContext);
-  const { errorTarea, tareaSeleccionada, agregarTarea, validarTarea, obtenerTareas, actualizarTarea, limpiarTarea } = tareasContext;
+  const { errorTarea, tareaSeleccionada, agregarTarea, validarTarea, actualizarTarea, limpiarTarea } = tareasContext; //obtenerTareas
 
   //useEffect que detecta si hay una tarea seleccionada
   useEffect(() => {
@@ -54,12 +54,10 @@ const FormTarea = () => {
     
     //revisar si es edicion o es nueva tarea
 
-
+ 
     if(tareaSeleccionada === null) {
       //pasar la validacion
-      tarea.proyectoId = proyectoActual.id;
-      tarea.estado = false;
-      //agregar la nueva tarea al state
+      tarea.proyecto = proyectoActual._id; //cambiamos de tarea.proyectoId = proyectoActual.id;   a tarea.proyecto = proyectoActual._id; para enviarle el id del proyecto al modelo y lo asigne  a este
       agregarTarea(tarea); //el reducer es el que limpia un previo error que podria haberse activado errorTarea
     }else {
       //actualizar tarea existente
@@ -71,7 +69,9 @@ const FormTarea = () => {
 
     //obtener y filtrar las tareas del proyecto actual
 
-    obtenerTareas(proyectoActual.id) //con context esto ya no tiene que actualizar en el componente principal como listadoTareas o app.js, si no que se hace mediante el state global en este caso tareaState 
+    //obtenerTareas(proyectoActual.id)  esto lo tuve que co
+    
+    //con context esto ya no tiene que actualizar en el componente principal como listadoTareas o app.js, si no que se hace mediante el state global en este caso tareaState 
  //reiniciar al form
     guardarTarea({
       nombre: ''

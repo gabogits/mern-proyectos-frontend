@@ -1,4 +1,4 @@
-import { FORMULARIO_PROYECTO, OBTENER_PROYECTOS, AGREGAR_PROYECTO, VALIDAR_FORMULARIO, PROYECTO_ACTUAL, ELIMINAR_PROYECTO  } from "../../types";
+import { FORMULARIO_PROYECTO, OBTENER_PROYECTOS, AGREGAR_PROYECTO, PROYECTO_ERROR, VALIDAR_FORMULARIO, PROYECTO_ACTUAL, ELIMINAR_PROYECTO  } from "../../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -8,6 +8,7 @@ export default (state, action) => {
         formulario: true,
       };
     case OBTENER_PROYECTOS:
+     
       return {
         ...state,
         proyectos: action.payload
@@ -27,13 +28,18 @@ export default (state, action) => {
         case PROYECTO_ACTUAL:
         return {
           ...state, 
-          proyecto: state.proyectos.filter(proyecto => proyecto.id === action.payload)
+          proyecto: state.proyectos.filter(proyecto => proyecto._id === action.payload)
         };
         case ELIMINAR_PROYECTO:
           return {
             ...state, 
-            proyectos: state.proyectos.filter(proyecto => proyecto.id !== action.payload), //aqui es proyectos por que a proyectos del state hay que rescribirlo, con todos los proyectos menos el eliminado
+            proyectos: state.proyectos.filter(proyecto => proyecto._id !== action.payload), //aqui es proyectos por que a proyectos del state hay que rescribirlo, con todos los proyectos menos el eliminado
             proyecto: null //y aqui en el state, regresamos el valor a null, para que se resetee el valor y ya no muestre  ni el listado de tareas, ni el formulario para agregar tareas
+          };
+        case PROYECTO_ERROR:
+          return {
+            ...state, 
+            mensaje: action.payload
           };
     default:
       return state;

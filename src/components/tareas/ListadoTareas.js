@@ -19,8 +19,9 @@ const ListadoTareas = () => {
 
         //array destructuring para extraer el proyecto actual
         const  [proyectoActual] = proyecto; //estamos extrayendo primero el objeto y de ahi vamos a extraer las propiedades
-
+    
     return ( 
+      
         <Fragment>
         <h2>Proyecto: {proyectoActual.nombre} </h2>
 
@@ -28,7 +29,7 @@ const ListadoTareas = () => {
            {tareasProyecto.length === 0
                 ? (<li className="tarea"><p>No hay tareas</p></li>)
                 :  tareasProyecto.map(tarea => (
-                    <Tarea  key={tarea.id}
+                    <Tarea  key={tarea._id}
                         tarea={tarea} />
                 ))
             
@@ -38,7 +39,7 @@ const ListadoTareas = () => {
         <button     
             type="button"
             className="btn btn-eliminar"
-            onClick={() => eliminarProyecto(proyectoActual.id)}
+            onClick={() => eliminarProyecto(proyectoActual._id)}
         >Eliminar Proyecto &times;</button>
     </Fragment>
      );
